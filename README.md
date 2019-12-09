@@ -1,7 +1,7 @@
 # Angular Cesium Demo App
 
 ## Demo
-+ You can try and learn about [angular-cesium](http://www.angular-cesium.com) from our demo.
++ You can try and learn about [angular-cesium](http://www.angular-cesium.com) from our [demo](https://angular-cesium.herokuapp.com/).
 + The demo contains many examples
   + Real data: showing real planes using **GraphQL** to warp an exiting REST service.
   + Simulated data: displaying planes data and sending using **Socket.io**.
