@@ -1,0 +1,23 @@
+<ac-map [sceneMode]="sceneMode" id="main-map">
+  <ac-map-layer-provider
+    *ngIf="appSettingsService.showMapLayer"
+    [provider]="arcGisMapServerProvider"
+    [options]="{
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer'
+    }"
+  >
+  </ac-map-layer-provider>
+  <ac-3d-tile-layer
+    *ngIf="appSettingsService.show3dtiles"
+    [options]="{
+      url: Cesium.IonResource.fromAssetId(29328)
+    }"
+  >
+  </ac-3d-tile-layer>
+  <tracks-layer #layer [show]="appSettingsService.showTracksLayer"
+                [tracksType]="appSettingsService.tracksDataType"></tracks-layer>
+
+  <toolbar-example></toolbar-example>
+  <context-menu-layer></context-menu-layer>
+  <keyboard-control-layer *ngIf="appSettingsService.keyboardControl"></keyboard-control-layer>
+</ac-map>

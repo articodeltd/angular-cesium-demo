@@ -1,20 +1,26 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<mat-sidenav-container class="sidenav-container">
+  <main-navbar (onMultiMapClick)="setMultiMaps()"
+               (onSettingClick)="openSidenav(settingsSidenav)"
+               (onToolbarSideNavClick)="openSidenav(sidenavToolbar)"
+  ></main-navbar>
+  <mat-sidenav #settingsSidenav class="sidenav">
+    <settings-form (cleanMap)="cleanMainMap()"></settings-form>
+  </mat-sidenav>
+  <mat-sidenav #sidenavToolbar class="sidenav" fixedInViewport="true"
+               [position]="'end'">
+    <sidenav-toolbar (onMultiMapClick)="setMultiMaps()"></sidenav-toolbar>
+  </mat-sidenav>
+  <div *ngIf="!multiMap" style="position: relative; height: 100%" oncontextmenu="return false;">
+    <demo-map #mainMap></demo-map>
+  </div>
+  <div *ngIf="multiMap" style="display: flex; flex-direction: row; flex: 1;">
+    <demo-multiple-maps></demo-multiple-maps>
+    <div id="left-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden" oncontextmenu="return false;"></div>
+    <div id="right-map-container" style="display: flex; flex: 1; position: relative; overflow: hidden" oncontextmenu="return false;"></div>
+  </div>
+  <footer class="page-footer">
+    <div class="footer-text"><span class="footer-text-mobile">Created and maintained&nbsp;</span> by
+      <a href="https://articode.co"> <img class="logo-img" src="/assets/articode_logo-01.png"/></a>
+    </div>
+  </footer>
+</mat-sidenav-container>
