@@ -5,7 +5,7 @@ import * as path from 'path';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import * as cors from 'cors';
-import * as socketIo from 'socket.io';
+import {Server} from 'socket.io';
 import scheme from './schema/schema';
 import { resolverMap, trackResolver } from './resolvers/resolvers';
 import { Simulative } from './simulative/simulative';
@@ -13,7 +13,16 @@ import { Simulative } from './simulative/simulative';
 const PORT = process.env.PORT || 3000;
 const app = express();
 const httpServer = http.createServer(app);
-const io = socketIo(httpServer);
+
+
+const io = new Server(httpServer,{
+  cors: {
+    origin: "http://localhost:4200",
+    methods: ["GET", "POST"]
+  }
+});
+
+// const io = socketIo(httpServer);
 
 app.use(cors());
 app.use(bodyParser.json());

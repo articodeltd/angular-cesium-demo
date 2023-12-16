@@ -4,9 +4,11 @@ import { AppSettingsService } from './services/app-settings-service/app-settings
 import { TracksDataProvider } from './services/dataProvider/tracksDataProvider.service';
 import { SimTracksDataProvider } from './services/dataProvider/sim-tracks-data-provider';
 import { DraggableToMapService, MapLayerProviderOptions, MapsManagerService } from 'angular-cesium';
-import { MatDialog, MatIconRegistry, MatSidenav } from '@angular/material';
+import { MatDialog} from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DemoMapComponent } from './map/demo-map/demo-map.component';
+import { MatIconRegistry } from '@angular/material/icon';
+import { MatSidenav } from '@angular/material/sidenav'
 
 @Component({
   selector: 'app-root',
